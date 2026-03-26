@@ -13,7 +13,7 @@ class Config:
     # ログ設定
     LOG_DIR = 'logs'
     LOG_FILE = os.path.join(LOG_DIR, 'app.log')
-    LOG_LEVEL = 'INFO'
+    LOG_LEVEL = os.environ.get('LOG_LEVEL', 'INFO').upper()
     
     # アプリケーション設定
     APP_NAME = '社員情報管理システム'
