@@ -34,6 +34,7 @@ def setup_logger(name='employee_system', log_file=None, level=None):
     if log_dir and not os.path.exists(log_dir):
         os.makedirs(log_dir)
 
+    # ロガーを取得（同一名のロガーが存在する場合はそれを再利用）
     logger = logging.getLogger(name)
     logger.setLevel(level)
 
@@ -41,6 +42,7 @@ def setup_logger(name='employee_system', log_file=None, level=None):
     if logger.hasHandlers():
         logger.handlers.clear()
 
+    # ログのフォーマットを定義
     formatter = logging.Formatter(
         '[%(asctime)s] %(levelname)s in %(module)s: %(message)s',
         datefmt='%Y-%m-%d %H:%M:%S'
@@ -57,6 +59,7 @@ def setup_logger(name='employee_system', log_file=None, level=None):
 
     logger.addHandler(file_handler)
 
+    # コンソールハンドラーも追加（開発中はコンソールにもログを出力するため）
     console_handler = logging.StreamHandler()
     console_handler.setFormatter(formatter)
 
