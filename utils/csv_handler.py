@@ -64,4 +64,4 @@ class CSVHandler:
         """CSVヘッダーの検証"""
         if not headers:
             return False
-        return all(h in headers for h in self.required_headers)
+        return all(header_row_data in headers for header_row_data in self.required_headers)
