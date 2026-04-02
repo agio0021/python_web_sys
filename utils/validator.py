@@ -136,6 +136,24 @@ class DataValidator:
             return False, "備考は1000文字以内です"
         return True, ""
 
+    def validate_employee_data(self, data: dict) -> list:
+        """社員データの総合バリデーション（必須8項目を一括チェック）"""
+        errors = []
+        checks = [
+            (self.validate_employee_id,  data.get('社員ID', '')),
+            (self.validate_name,         data.get('氏名', '')),
+            (self.validate_name_kana,    data.get('氏名カナ', '')),
+            (self.validate_department,   data.get('部署', '')),
+            (self.validate_position,     data.get('役職', '')),
+            (self.validate_email,        data.get('メールアドレス', '')),
+            (self.validate_hire_date,    data.get('入社日', '')),
+            (self.validate_salary,       data.get('給与', '')),
+        ]
+        for validator_func, value in checks:
+            is_valid, message = validator_func(value)
+            if not is_valid:
+                errors.append(message)
+        return errors
 
 if __name__ == "__main__":
     # テスト実行

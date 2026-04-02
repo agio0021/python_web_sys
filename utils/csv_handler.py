@@ -31,19 +31,19 @@ class CSVHandler:
                     return success_count, [error_message]
 
                 # データの検証と保存
-                for row_num, row in enumerate(reader, start=2):
-                    validation_errors = self.validator.validate_employee_data(row)
+                for row_data in reader:
+                    validation_errors = self.validator.validate_employee_data(row_data)
                     if validation_errors:
-                        error_message = f"社員ID {row.get('社員ID', '不明')}: " + "; ".join(validation_errors)
+                        error_message = f"社員ID {row_data.get('社員ID', '不明')}: " + "; ".join(validation_errors)
                         self.logger.warning(error_message)
                         error_messages.append(error_message)
                         continue
 
                     try:
-                        self.db_manager.save_employee(row)
+                        self.db_manager.save_employee(row_data)
                         success_count += 1
                     except Exception as e:
-                        error_message = f"社員ID {row.get('社員ID', '不明')}: データベースへの保存に失敗 - {str(e)}"
+                        error_message = f"社員ID {row_data.get('社員ID', '不明')}: データベースへの保存に失敗 - {str(e)}"
                         self.logger.error(error_message)
                         error_messages.append(error_message)
 
