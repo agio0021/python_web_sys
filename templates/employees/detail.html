@@ -1,0 +1,51 @@
+<!-- templates/employees/detail.html -->
+{% extends "base.html" %}
+
+{% block title %}社員詳細 - {{ employee.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>社員詳細</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>社員ID</th>
+                <td>{{ employee.employee_id }}</td>
+            </tr>
+            <tr>
+                <th>氏名</th>
+                <td>{{ employee.name }}</td>
+            </tr>
+            <tr>
+                <th>氏名カナ</th>
+                <td>{{ employee.name_kana }}</td>
+            </tr>
+            <tr>
+                <th>部署</th>
+                <td>{{ employee.department }}</td>
+            </tr>
+            <tr>
+                <th>役職</th>
+                <td>{{ employee.position }}</td>
+            </tr>
+            <tr>
+                <th>入社日</th>
+                <td>{{ employee.hire_date }}</td>
+            </tr>
+            <tr>
+                <th>給与</th>
+                <td>{{ employee.salary }}</td>
+            </tr>
+            <tr>
+                <th>メールアドレス</th>
+                <td>{{ employee.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="/">一覧に戻る</a>
+    <a href="/employee/{{ employee.employee_id }}/edit">編集</a>
+    <a href="/employee/{{ employee.employee_id }}/delete">削除</a>
+</div>
+{% endblock %}
