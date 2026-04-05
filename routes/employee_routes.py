@@ -1,5 +1,6 @@
 # routes/employee_routes.py
 from flask import Blueprint, render_template, abort
+from werkzeug.exceptions import HTTPException
 import logging
 
 employee_bp = Blueprint('employee', __name__)
@@ -29,6 +30,8 @@ def index():
         logger.info(f"社員一覧表示:{len(employees)}件")
         return render_template('employees/list.html', employees=employees)
 
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"社員一覧の取得に失敗: {e}")
         abort(500, description="社員一覧の取得に失敗しました。")
@@ -60,6 +63,8 @@ def detail(employee_id):
         logger.info(f"社員詳細表示：社員ID {employee_id}")
         return render_template('employees/detail.html', employee=employee)
 
+    except HTTPException:
+        raise
     except Exception as e:
         logger.error(f"社員詳細の取得に失敗: {e}")
         abort(500, description="社員詳細の取得に失敗しました。")
