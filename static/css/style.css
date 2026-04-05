@@ -1,0 +1,213 @@
+/* =============================================
+   基本レイアウト
+   ============================================= */
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* =============================================
+   ヘッダー
+   ============================================= */
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem 2rem;
+}
+
+header h1 a {
+    color: white;
+    text-decoration: none;
+}
+
+/* =============================================
+   ナビゲーション
+   ============================================= */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color: #34495e;
+    border-radius: 4px;
+}
+
+nav ul li a:hover {
+    background-color: #4a5f7f;
+}
+
+/* =============================================
+   メインコンテンツ
+   ============================================= */
+main {
+    max-width: 1200px;
+    margin: 2rem auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 2rem;
+}
+
+/* =============================================
+   フラッシュメッセージ
+   ============================================= */
+.flash-messages {
+    margin-bottom: 1rem;
+}
+
+.flash {
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+}
+
+.flash.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.flash.error,
+.flash.danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.flash.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+/* =============================================
+   テーブル
+   ============================================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+table th,
+table td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+table tr:hover {
+    background-color: #f5f5f5;
+}
+
+/* =============================================
+   フォーム
+   ============================================= */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* =============================================
+   ボタン
+   ============================================= */
+button,
+.button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover,
+.button:hover {
+    background-color: #0056b3;
+}
+
+button.btn-secondary,
+.button.btn-secondary {
+    background-color: #6c757d;
+}
+
+button.btn-secondary:hover,
+.button.btn-secondary:hover {
+    background-color: #545b62;
+}
+
+button.btn-danger,
+.button.btn-danger {
+    background-color: #dc3545;
+}
+
+button.btn-danger:hover,
+.button.btn-danger:hover {
+    background-color: #c82333;
+}
+
+/* =============================================
+   メニュー（トップページ）
+   ============================================= */
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.menu-item {
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* =============================================
+   コンテナ
+   ============================================= */
+.container {
+    padding: 1rem 0;
+}
+
+/* =============================================
+   フッター
+   ============================================= */
+footer {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    margin-top: 2rem;
+}
