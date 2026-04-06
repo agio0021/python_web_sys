@@ -3,6 +3,11 @@ from flask import Flask
 from config import Config
 from utils.logger import setup_logger
 
+# アプリケーションファクトリーパターンを採用する事で下記のメリットがある
+# - アプリの設定や拡張機能の初期化を一元管理できる
+# - テストの際に異なる設定でアプリを簡単に作成できる
+# - 循環インポートを回避できる
+
 def create_app():
     """Flaskアプリケーションファクトリー関数"""
 
