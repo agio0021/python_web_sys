@@ -1,0 +1,26 @@
+<!-- templates/employees/delete.html -->
+{% extends "base.html" %}
+
+{% block title %}社員削除確認 - {{ employee.employee_id }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>社員削除確認</h1>
+
+    <p>以下の社員情報を削除します。この操作は取り消せません。</p>
+
+    <table class="table">
+        <tbody>
+            <tr><th>社員ID</th><td>{{ employee.employee_id }}</td></tr>
+            <tr><th>氏名</th><td>{{ employee.name }}</td></tr>
+            <tr><th>部署</th><td>{{ employee.department }}</td></tr>
+            <tr><th>役職</th><td>{{ employee.position }}</td></tr>
+        </tbody>
+    </table>
+
+    <form method="POST">
+        <button type="submit">削除する</button>
+        <a href="/employee/{{ employee.employee_id }}">キャンセル</a>
+    </form>
+</div>
+{% endblock %}
