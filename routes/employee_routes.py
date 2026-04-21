@@ -330,7 +330,6 @@ def search():
         """
         
         conn = db_manager.get_connection()
-        # 例外発生時でも必ず接続をクローズするために、try-finally構文を使用してデータベース操作を行う
         try:
             cursor = conn.cursor()
             cursor.execute(sql, params)

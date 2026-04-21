@@ -1,0 +1,78 @@
+<!-- templates/employees/search.html -->
+{% extends "base.html" %}
+
+{% block title %}社員検索{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>社員検索</h1>
+
+    <form method="GET" action="/search" class="mb-4">
+        <div class="row g-3">
+            <div class="col-md-4">
+                <label for="name" class="form-label">氏名</label>
+                <input type="text" class="form-control" id="name" name="name"
+                       value="{{ query_name }}" placeholder="氏名で検索">
+            </div>
+            <div class="col-md-4">
+                <label for="department" class="form-label">部署</label>
+                <input type="text" class="form-control" id="department" name="department"
+                       value="{{ query_department }}" placeholder="部署で検索">
+            </div>
+            <div class="col-md-4">
+                <label for="position" class="form-label">役職</label>
+                <input type="text" class="form-control" id="position" name="position"
+                       value="{{ query_position }}" placeholder="役職で検索">
+            </div>
+        </div>
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary">検索</button>
+            <a href="/search" class="btn btn-secondary">クリア</a>
+        </div>
+    </form>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if employees %}
+        <p>検索結果: {{ employees|length }}件</p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>社員ID</th>
+                    <th>氏名</th>
+                    <th>部署</th>
+                    <th>役職</th>
+                    <th>入社日</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for emp in employees %}
+                <tr>
+                    <td>{{ emp.employee_id }}</td>
+                    <td>{{ emp.name }}</td>
+                    <td>{{ emp.department }}</td>
+                    <td>{{ emp.position }}</td>
+                    <td>{{ emp.hire_date }}</td>
+                    <td>
+                        <a href="/employee/{{ emp.employee_id }}">詳細</a>
+                        <a href="/employee/{{ emp.employee_id }}/edit">編集</a>
+                        <a href="/employee/{{ emp.employee_id }}/delete">削除</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p class="text-muted">該当する社員が見つかりませんでした。</p>
+    {% endif %}
+
+    <a href="/" class="btn btn-secondary mt-2">トップへ戻る</a>
+</div>
+{% endblock %}
